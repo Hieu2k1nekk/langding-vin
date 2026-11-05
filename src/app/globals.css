@@ -1,26 +1,133 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* ------------------------------------------------------------------
+ * Design tokens
+ * Brand palette kept intentionally small: neutral surfaces, one accent.
+ * ------------------------------------------------------------------ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-be-vietnam), ui-sans-serif, system-ui, sans-serif;
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-success: var(--success);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+
+  --shadow-soft: 0 1px 2px rgb(23 23 23 / 0.04), 0 8px 24px -12px rgb(23 23 23 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(23 23 23 / 0.04), 0 24px 48px -24px rgb(23 23 23 / 0.22);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --ink: #0b0b0c;
+  --surface: #f5f6f8;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --popover: #ffffff;
+  --popover-foreground: #171717;
+  --primary: #1464f4;
+  --primary-hover: #0f55d6;
+  --primary-soft: #eef4ff;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f6f8;
+  --secondary-foreground: #171717;
+  --muted: #f5f6f8;
+  /* #767676 is the closest grey to #777 that meets WCAG AA (4.5:1) on white */
+  --muted-foreground: #767676;
+  --accent: #f5f6f8;
+  --accent-foreground: #171717;
+  --destructive: #d92d20;
+  --success: #12804a;
+  --border: #e8e8e8;
+  --input: #e2e3e6;
+  --ring: #1464f4;
+  --radius: 0.625rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    overflow-x: clip;
+  }
+  /* Anchor targets clear the sticky header */
+  section[id] {
+    scroll-margin-top: 72px;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8 lg:px-10;
+  }
+  .eyebrow {
+    @apply text-xs font-medium tracking-[0.18em] text-muted-foreground uppercase;
+  }
+  .section-y {
+    @apply py-20 md:py-28;
+  }
+  /* Horizontal snap rail used on small screens */
+  .snap-rail {
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .snap-rail::-webkit-scrollbar {
+    display: none;
+  }
 }
