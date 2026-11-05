@@ -12,22 +12,6 @@ export const heroSlides = [
     alt: "VinFast VF 9 màu bạc tại triển lãm",
     position: "60% 55%",
   },
-  {
-    vehicleId: "vf6",
-    label: "VF 6",
-    caption: "SUV hạng B",
-    src: "/images/vehicles/vf6.webp",
-    alt: "VinFast VF 6 màu vàng tại triển lãm",
-    position: "62% 60%",
-  },
-  {
-    vehicleId: "vf7",
-    label: "VF 7",
-    caption: "SUV coupé hạng C",
-    src: "/images/vehicles/vf7-green.webp",
-    alt: "VinFast VF 7 màu xanh rêu tại triển lãm",
-    position: "50% 62%",
-  },
 ] as const
 
 export const featuredVehicle = {
@@ -94,42 +78,63 @@ export const benefits = [
   },
 ] as const
 
+/**
+ * Chương trình ưu đãi — nội dung do đại lý cung cấp (11/2026).
+ * MSRP = giá bán lẻ đề xuất (giá niêm yết) của VinFast.
+ */
 export const promotions = [
   {
-    id: "uu-dai",
-    icon: "BadgePercent",
-    title: "Chương trình ưu đãi",
-    description:
-      "Ưu đãi giá, quà tặng phụ kiện và chính sách đặc biệt áp dụng theo từng thời điểm.",
-    points: ["[Nội dung ưu đãi 1]", "[Nội dung ưu đãi 2]", "Thời gian áp dụng: [dd/mm – dd/mm/yyyy]"],
-    placeholder: true,
+    id: "cong-an-bo-doi",
+    icon: "ShieldCheck",
+    title: "Công an – Bộ đội và nhân viên VN POST",
+    eligibility:
+      "Khách hàng đang phục vụ (đã biên chế) trong Quân đội nhân dân và Công an nhân dân Việt Nam và người thân (Vợ chồng/con cái/ tứ thân phụ mẫu)",
+    tiers: [
+      { models: "VF 2, VF 3 & Minio Green", value: "6% MSRP" },
+      { models: "VF 9, VF 8 Thế hệ mới, Lạc Hồng 900 LX, EC Van & VF Wild", value: "7% MSRP" },
+      { models: "Các dòng xe còn lại", value: "9% MSRP" },
+    ],
+    note: null,
+    cta: "Nhận tư vấn ưu đãi",
   },
   {
-    id: "tra-gop",
-    icon: "Landmark",
-    title: "Chính sách trả góp",
-    description:
-      "Liên kết với nhiều ngân hàng, thủ tục nhanh gọn, phương án trả trước linh hoạt.",
-    points: ["Trả trước từ [xx]%", "Thời hạn vay đến [xx] năm", "Lãi suất từ [x,x]%/năm"],
-    placeholder: true,
+    id: "doi-xang-sang-dien",
+    icon: "RefreshCw",
+    title: "Đổi xăng sang điện",
+    eligibility:
+      "Khách hàng đang sở hữu xe ô tô xăng / xe máy xăng / xe máy điện VinFast / ô tô điện VinFast.",
+    tiers: [
+      { models: "VF 2, VF 3 & Minio Green", value: "3% MSRP" },
+      { models: "VF 9, VF 8 Thế hệ mới, Lạc Hồng 900 LX, EC Van & VF Wild", value: "5% MSRP" },
+      { models: "Các dòng xe còn lại", value: "9% MSRP" },
+    ],
+    note: null,
+    cta: "Nhận tư vấn ưu đãi",
   },
   {
-    id: "tai-chinh",
-    icon: "Calculator",
-    title: "Hỗ trợ tư vấn tài chính",
-    description:
-      "Chuyên viên tư vấn giúp bạn lựa chọn phương án tài chính tối ưu, minh bạch chi phí lăn bánh.",
-    points: ["Dự toán chi phí lăn bánh", "So sánh gói vay ngân hàng", "Hỗ trợ hồ sơ trọn gói"],
-    placeholder: false,
+    id: "voucher-xe-xang",
+    icon: "Ticket",
+    title: "Voucher xe xăng VinFast",
+    eligibility: "Khách hàng mua xe mới Fadil, Lux A, Lux SA sẽ được tặng voucher giảm giá.",
+    tiers: [
+      { models: "Fadil", value: "30 triệu" },
+      { models: "Lux A", value: "60 triệu" },
+      { models: "Lux SA", value: "80 triệu" },
+    ],
+    note: "Lưu ý: không cộng dồn với các chương trình khác.",
+    cta: "Nhận tư vấn ưu đãi",
   },
   {
-    id: "lai-thu",
-    icon: "CarFront",
-    title: "Chương trình lái thử",
-    description:
-      "Trải nghiệm thực tế tại showroom hoặc tận nhà, cùng chuyên viên giải đáp mọi thắc mắc.",
-    points: ["Đặt lịch linh hoạt", "Lái thử tại showroom hoặc tận nơi*", "Không phát sinh chi phí"],
-    placeholder: true,
+    id: "mien-phi-sac",
+    icon: "PlugZap",
+    title: "Miễn phí sạc",
+    eligibility: "Liên hệ để nhận hướng dẫn cụ thể.",
+    tiers: [
+      { models: "Thời hạn", value: "Đến 10/02/2029" },
+      { models: "Áp dụng", value: "Tất cả các dòng xe" },
+    ],
+    note: null,
+    cta: "Liên hệ nhận hướng dẫn",
   },
 ] as const
 

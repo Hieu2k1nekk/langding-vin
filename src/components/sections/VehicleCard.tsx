@@ -16,7 +16,7 @@ export function VehicleCard({ vehicle, onDetail, onQuote }: VehicleCardProps) {
       <button
         type="button"
         onClick={() => onDetail(vehicle)}
-        className="relative block aspect-[16/11] overflow-hidden bg-[#e9eaed] text-left"
+        className="relative block aspect-[16/11] overflow-hidden bg-gradient-to-b from-white to-[#eceef1] text-left"
         aria-label={`Xem chi tiết VinFast ${vehicle.name}`}
       >
         <Image
@@ -24,8 +24,7 @@ export function VehicleCard({ vehicle, onDetail, onQuote }: VehicleCardProps) {
           alt={vehicle.image.alt}
           fill
           sizes="(min-width: 1280px) 400px, (min-width: 1024px) 31vw, (min-width: 768px) 46vw, 84vw"
-          className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
-          style={{ objectPosition: vehicle.image.position }}
+          className="object-contain px-5 pt-10 pb-3 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.035]"
         />
         <span className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-foreground backdrop-blur">
           {vehicle.segment}
@@ -64,6 +63,10 @@ export function VehicleCard({ vehicle, onDetail, onQuote }: VehicleCardProps) {
           <p className="mt-0.5 text-[22px] font-semibold tracking-tight">
             {formatPrice(vehicle.priceFrom)}
             <span className="align-super text-xs text-muted-foreground">*</span>
+          </p>
+          {/* Always rendered so prices and buttons line up across cards in a row. */}
+          <p className="mt-1 min-h-4 text-xs text-muted-foreground">
+            {vehicle.premiumPaintFee ? `Màu nâng cao: +${formatPrice(vehicle.premiumPaintFee)}` : null}
           </p>
           <div className="mt-5 grid grid-cols-2 gap-2.5">
             <Button variant="outline" onClick={() => onDetail(vehicle)}>

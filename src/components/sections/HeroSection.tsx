@@ -99,34 +99,42 @@ export function HeroSection() {
             <span className="mx-2 text-white/30">/</span>
             Giá niêm yết từ {formatPrice(activeVehicle?.priceFrom ?? null)}*
           </div>
-          <div role="tablist" aria-label="Chọn mẫu xe hiển thị" className="grid grid-cols-3 gap-2 sm:gap-6 lg:flex lg:gap-10">
-            {heroSlides.map((slide, i) => (
-              <button
-                key={slide.label}
-                role="tab"
-                type="button"
-                aria-selected={i === index}
-                onClick={() => setIndex(i)}
-                className="group relative -mt-5 pt-5 pb-1 text-left"
-              >
-                <span
-                  className={cn(
-                    "absolute inset-x-0 -top-px h-0.5 origin-left bg-white transition-transform duration-500",
-                    i === index ? "scale-x-100" : "scale-x-0",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block text-[15px] font-semibold transition-colors sm:text-base",
-                    i === index ? "text-white" : "text-white/50 group-hover:text-white/80",
-                  )}
+          {heroSlides.length === 1 ? (
+            // Single model: a plain caption — a lone tab would do nothing.
+            <div className="pb-1">
+              <span className="block text-[15px] font-semibold text-white sm:text-base">{heroSlides[0].label}</span>
+              <span className="mt-0.5 block text-xs text-white/50">{heroSlides[0].caption}</span>
+            </div>
+          ) : (
+            <div role="tablist" aria-label="Chọn mẫu xe hiển thị" className="grid grid-cols-3 gap-2 sm:gap-6 lg:flex lg:gap-10">
+              {heroSlides.map((slide, i) => (
+                <button
+                  key={slide.label}
+                  role="tab"
+                  type="button"
+                  aria-selected={i === index}
+                  onClick={() => setIndex(i)}
+                  className="group relative -mt-5 pt-5 pb-1 text-left"
                 >
-                  {slide.label}
-                </span>
-                <span className="mt-0.5 block truncate text-xs text-white/50">{slide.caption}</span>
-              </button>
-            ))}
-          </div>
+                  <span
+                    className={cn(
+                      "absolute inset-x-0 -top-px h-0.5 origin-left bg-white transition-transform duration-500",
+                      i === index ? "scale-x-100" : "scale-x-0",
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "block text-[15px] font-semibold transition-colors sm:text-base",
+                      i === index ? "text-white" : "text-white/50 group-hover:text-white/80",
+                    )}
+                  >
+                    {slide.label}
+                  </span>
+                  <span className="mt-0.5 block truncate text-xs text-white/50">{slide.caption}</span>
+                </button>
+              ))}
+            </div>
+          )}
         </m.div>
       </div>
     </section>

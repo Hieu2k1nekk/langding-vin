@@ -1,5 +1,5 @@
 /**
- * Thông tin đại lý — TẤT CẢ là placeholder, cần thay bằng dữ liệu thật trước khi triển khai.
+ * Thông tin đại lý. Tên đại lý (`dealerName`) và `url` vẫn là placeholder — cần cập nhật trước khi triển khai.
  */
 export const siteConfig = {
   name: "VinFast Showroom",
@@ -8,22 +8,22 @@ export const siteConfig = {
     "Đại lý ủy quyền VinFast — tư vấn, báo giá, lái thử và hỗ trợ trả góp các dòng ô tô điện VinFast.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://vinfast-dealer.example.com",
   locale: "vi_VN",
+  // Hotline và Zalo dùng chung một số
   hotline: {
-    display: "1900 xxxx",
-    tel: "1900xxxx",
+    display: "086.727.1960",
+    tel: "0867271960",
   },
   sales: {
-    display: "09xx xxx xxx",
-    tel: "09xxxxxxxx",
+    display: "086.727.1960",
+    tel: "0867271960",
   },
-  email: "tuvan@vinfast-dealer.example.com",
-  address: "Số [xx], Đường [Tên đường], Quận/Huyện [xx], Tỉnh/Thành phố [xx]",
+  address: "Số 492, Đường 30/6, Phố Phúc Trì, Phường Hoa Lư, Tỉnh Ninh Bình",
   openingHours: "08:00 – 20:00, tất cả các ngày trong tuần",
-  mapUrl: "https://maps.google.com/?q=VinFast",
+  mapUrl: "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent("Số 492 Đường 30/6, Phúc Trì, Hoa Lư, Ninh Bình"),
   social: {
-    facebook: "https://facebook.com/",
-    youtube: "https://youtube.com/",
-    zalo: "https://zalo.me/09xxxxxxxx",
+    facebook: "https://www.facebook.com/profile.php?id=61596056886051",
+    zalo: "https://zalo.me/0867271960",
   },
 } as const
 
@@ -33,7 +33,7 @@ export const siteConfig = {
  */
 export const sectionVisibility = {
   "vi-sao": false, // Vì sao chọn VinFast
-  "uu-dai": false, // Ưu đãi & chính sách
+  "uu-dai": true, // Ưu đãi & chính sách
   "hoi-dap": false, // Câu hỏi thường gặp
   "tin-tuc": false, // Tin tức & cẩm nang
   "dang-ky": false, // Form đăng ký tư vấn — khi ẩn, các nút "Nhận báo giá"/"Lái thử" mở Zalo

@@ -62,7 +62,7 @@ export function VehicleSection() {
           id="vehicles-title"
           eyebrow="Dòng xe VinFast"
           title="Lựa chọn hoàn hảo cho mọi hành trình"
-          description="Từ mẫu xe đô thị nhỏ gọn đến SUV 7 chỗ cao cấp — tất cả đều thuần điện, êm ái và thông minh."
+          description="Từ xe đô thị nhỏ gọn, SUV, MPV 7 chỗ đến bán tải và xe van chở hàng — êm ái, thông minh, phù hợp mọi nhu cầu."
           aside={
             <button
               type="button"

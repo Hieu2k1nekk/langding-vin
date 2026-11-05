@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useSyncExternalStore } from "react"
+import { useState } from "react"
 import Image from "next/image"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { A11y, Keyboard } from "swiper/modules"
@@ -11,17 +11,12 @@ import "swiper/css"
 import { featuredVehicle } from "@/data/content"
 import { formatPrice, getVehicle } from "@/data/vehicles"
 import { cn } from "@/lib/utils"
+import { useMounted } from "@/lib/use-mounted"
 import { requestConsultation } from "@/lib/consultation-events"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/shared/Reveal"
 
 const GALLERY_SIZES = "(min-width: 1280px) 720px, (min-width: 1024px) 56vw, 100vw"
-const noopSubscribe = () => () => {}
-
-/** Swiper reads the clock while rendering, so it can only mount on the client (Cache Components prerender). */
-function useMounted() {
-  return useSyncExternalStore(noopSubscribe, () => true, () => false)
-}
 
 export function FeaturedVehicle() {
   const mounted = useMounted()

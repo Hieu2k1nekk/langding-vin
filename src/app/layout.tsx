@@ -50,7 +50,6 @@ const dealerJsonLd = {
   description: siteConfig.shortDescription,
   url: siteConfig.url,
   telephone: siteConfig.hotline.tel,
-  email: siteConfig.email,
   address: { "@type": "PostalAddress", streetAddress: siteConfig.address, addressCountry: "VN" },
   brand: { "@type": "Brand", name: "VinFast" },
   sameAs: Object.values(siteConfig.social),

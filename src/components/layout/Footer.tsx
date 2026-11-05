@@ -1,14 +1,13 @@
-import { Clock, Mail, MapPin, Phone } from "lucide-react"
+import { Clock, MapPin, Phone } from "lucide-react"
 
 import { isSectionVisible, navItems, siteConfig } from "@/config/site"
 import { imageCredits } from "@/data/image-credits"
 import { vehicles } from "@/data/vehicles"
 import { Logo } from "@/components/shared/Logo"
-import { FacebookIcon, YoutubeIcon, ZaloIcon } from "@/components/shared/SocialIcons"
+import { FacebookIcon, ZaloIcon } from "@/components/shared/SocialIcons"
 
 const socials = [
   { label: "Facebook", href: siteConfig.social.facebook, Icon: FacebookIcon },
-  { label: "YouTube", href: siteConfig.social.youtube, Icon: YoutubeIcon },
   { label: "Zalo", href: siteConfig.social.zalo, Icon: ZaloIcon },
 ]
 
@@ -53,20 +52,8 @@ export function Footer() {
               <a href={`tel:${siteConfig.hotline.tel}`} className="flex gap-3 hover:text-white">
                 <Phone className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
                 <span>
-                  Hotline: <span className="font-medium text-white">{siteConfig.hotline.display}</span>
+                  Hotline/Zalo: <span className="font-medium text-white">{siteConfig.hotline.display}</span>
                 </span>
-              </a>
-            </li>
-            <li>
-              <a href={`tel:${siteConfig.sales.tel}`} className="flex gap-3 hover:text-white">
-                <Phone className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-                <span>Kinh doanh: {siteConfig.sales.display}</span>
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${siteConfig.email}`} className="flex gap-3 break-all hover:text-white">
-                <Mail className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
-                {siteConfig.email}
               </a>
             </li>
             <li>
@@ -128,8 +115,14 @@ export function Footer() {
           hiệu VinFast thuộc sở hữu của VinFast.
         </p>
         <details className="mt-4 max-w-4xl">
-          <summary className="cursor-pointer hover:text-white/90">Nguồn hình ảnh (Wikimedia Commons)</summary>
+          <summary className="cursor-pointer hover:text-white/90">Nguồn hình ảnh</summary>
           <ul className="mt-2 space-y-1">
+            <li>
+              Ảnh các dòng xe trong mục Sản phẩm —{" "}
+              <a href="https://vinfastauto.com/vn_vi" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-white">
+                VinFast (vinfastauto.com)
+              </a>
+            </li>
             {imageCredits.map((c) => (
               <li key={c.file}>
                 {c.subject} — ảnh của {c.author},{" "}

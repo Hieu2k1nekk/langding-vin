@@ -1,21 +1,13 @@
 "use client"
 
-import { ArrowRight, BadgePercent, Calculator, CarFront, Check, Landmark, type LucideIcon } from "lucide-react"
+import { ArrowRight, PlugZap, RefreshCw, ShieldCheck, Ticket, type LucideIcon } from "lucide-react"
 
 import { promotions } from "@/data/content"
-import type { NeedValue } from "@/data/content"
 import { requestConsultation } from "@/lib/consultation-events"
 import { Reveal } from "@/components/shared/Reveal"
 import { SectionHeading } from "@/components/shared/SectionHeading"
 
-const icons: Record<(typeof promotions)[number]["icon"], LucideIcon> = { BadgePercent, Landmark, Calculator, CarFront }
-
-const ctaByPromotion: Record<(typeof promotions)[number]["id"], { label: string; need: NeedValue }> = {
-  "uu-dai": { label: "Nhận thông tin ưu đãi", need: "mua-xe" },
-  "tra-gop": { label: "Tư vấn trả góp", need: "tra-gop" },
-  "tai-chinh": { label: "Gặp chuyên viên tài chính", need: "tra-gop" },
-  "lai-thu": { label: "Đặt lịch lái thử", need: "lai-thu" },
-}
+const icons: Record<(typeof promotions)[number]["icon"], LucideIcon> = { ShieldCheck, RefreshCw, Ticket, PlugZap }
 
 export function PromotionSection() {
   return (
@@ -24,46 +16,43 @@ export function PromotionSection() {
         <SectionHeading
           id="promotions-title"
           eyebrow="Ưu đãi & chính sách"
-          title="Sở hữu VinFast dễ dàng hơn bao giờ hết"
-          description="Chương trình ưu đãi và chính sách tài chính được cập nhật theo từng thời điểm. Liên hệ đại lý để nhận thông tin mới nhất."
+          title="Chương trình ưu đãi đang áp dụng"
+          description="Mức ưu đãi tính theo giá bán lẻ đề xuất (MSRP) của VinFast. Liên hệ đại lý để được hướng dẫn điều kiện và hồ sơ áp dụng."
         />
 
         <ul className="mt-12 grid gap-4 sm:grid-cols-2 md:mt-14 md:gap-6 xl:grid-cols-4">
           {promotions.map((promo, i) => {
             const Icon = icons[promo.icon]
-            const cta = ctaByPromotion[promo.id]
             return (
               <li key={promo.id}>
                 <Reveal
                   delay={(i % 4) * 0.08}
                   className="flex h-full flex-col rounded-2xl bg-white p-6 shadow-soft transition-shadow duration-500 hover:shadow-lift sm:p-7"
                 >
-                  <div className="flex items-start justify-between gap-3">
-                    <span className="grid size-11 place-items-center rounded-xl bg-surface text-foreground">
-                      <Icon className="size-5" strokeWidth={1.75} aria-hidden="true" />
-                    </span>
-                    {promo.placeholder && (
-                      <span className="rounded-full border border-dashed border-amber-400 bg-amber-50 px-2.5 py-1 text-[11px] font-medium text-amber-800">
-                        Cần cập nhật
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="mt-6 text-lg font-semibold tracking-tight">{promo.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">{promo.description}</p>
-                  <ul className="mt-5 space-y-2.5 border-t pt-5">
-                    {promo.points.map((point) => (
-                      <li key={point} className="flex gap-2.5 text-sm">
-                        <Check className="mt-0.5 size-4 shrink-0 text-primary" aria-hidden="true" />
-                        <span>{point}</span>
-                      </li>
+                  <span className="grid size-11 place-items-center rounded-xl bg-surface text-foreground">
+                    <Icon className="size-5" strokeWidth={1.75} aria-hidden="true" />
+                  </span>
+                  <h3 className="mt-6 text-lg leading-snug font-semibold tracking-tight">{promo.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{promo.eligibility}</p>
+
+                  <dl className="mt-5 divide-y divide-border border-t">
+                    {promo.tiers.map((tier) => (
+                      <div key={tier.models} className="flex items-baseline justify-between gap-4 py-3">
+                        <dt className="text-sm leading-snug">{tier.models}</dt>
+                        <dd className="shrink-0 text-right text-[15px] font-semibold tracking-tight text-primary">
+                          {tier.value}
+                        </dd>
+                      </div>
                     ))}
-                  </ul>
+                  </dl>
+                  {promo.note && <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{promo.note}</p>}
+
                   <button
                     type="button"
-                    onClick={() => requestConsultation({ need: cta.need })}
+                    onClick={() => requestConsultation({ need: "mua-xe" })}
                     className="group mt-auto inline-flex items-center gap-2 self-start pt-7 text-sm font-medium text-primary"
                   >
-                    {cta.label}
+                    {promo.cta}
                     <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                   </button>
                 </Reveal>
@@ -72,8 +61,9 @@ export function PromotionSection() {
           })}
         </ul>
 
-        <p className="mt-8 text-xs leading-relaxed text-muted-foreground">
-          Nội dung có nhãn “Cần cập nhật” là thông tin mẫu — đại lý cần thay bằng chương trình thực tế đang áp dụng.
+        <p className="mt-8 max-w-3xl text-xs leading-relaxed text-muted-foreground">
+          Chương trình có thể thay đổi hoặc kết thúc sớm theo chính sách của VinFast. Vui lòng liên hệ đại lý để xác nhận
+          điều kiện áp dụng tại thời điểm mua xe.
         </p>
       </div>
     </section>
