@@ -3,7 +3,7 @@
  */
 export const siteConfig = {
   name: "VinFast Showroom",
-  dealerName: "Đại lý VinFast [Tên đại lý]",
+  dealerName: "Đại lý VinFast",
   shortDescription:
     "Đại lý ủy quyền VinFast — tư vấn, báo giá, lái thử và hỗ trợ trả góp các dòng ô tô điện VinFast.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://vinfast-dealer.example.com",
@@ -17,10 +17,10 @@ export const siteConfig = {
     display: "086.727.1960",
     tel: "0867271960",
   },
-  address: "Số 492, Đường 30/6, Phố Phúc Trì, Phường Hoa Lư, Tỉnh Ninh Bình",
+  address: "Đường 30/6, Phố Phúc Trì, Phường Hoa Lư, Tỉnh Ninh Bình",
   openingHours: "08:00 – 20:00, tất cả các ngày trong tuần",
   mapUrl: "https://www.google.com/maps/search/?api=1&query=" +
-    encodeURIComponent("Số 492 Đường 30/6, Phúc Trì, Hoa Lư, Ninh Bình"),
+    encodeURIComponent("Đường 30/6, Phúc Trì, Hoa Lư, Ninh Bình"),
   social: {
     facebook: "https://www.facebook.com/profile.php?id=61596056886051",
     zalo: "https://zalo.me/0867271960",
