@@ -103,8 +103,8 @@ export function Footer() {
           </div>
         </nav>
       </div>
-{/* 
-      <div id="chinh-sach-bao-mat" className="container-page scroll-mt-20 border-t border-white/10 py-8 text-xs leading-relaxed">
+
+      {/* <div id="chinh-sach-bao-mat" className="container-page scroll-mt-20 border-t border-white/10 py-8 text-xs leading-relaxed">
         <p className="font-medium text-white/80">Chính sách bảo mật</p>
         <p className="mt-2 max-w-4xl">
           Thông tin bạn cung cấp chỉ được sử dụng để tư vấn, báo giá và hỗ trợ mua xe; không chia sẻ cho bên thứ ba ngoài
@@ -133,16 +133,16 @@ export function Footer() {
             ))}
           </ul>
         </details>
-      </div>
+      </div> */}
 
       <div className="container-page flex flex-col gap-2 border-t border-white/10 py-6 text-xs sm:flex-row sm:justify-between">
         <p>
           © <CopyrightYear /> {siteConfig.dealerName}. Bảo lưu mọi quyền.
         </p>
-        <a href="#chinh-sach-bao-mat" className="hover:text-white">
+        {/* <a href="#chinh-sach-bao-mat" className="hover:text-white">
           Chính sách bảo mật
-        </a>
-      </div> */}
+        </a> */}
+      </div>
     </footer>
   )
 }
