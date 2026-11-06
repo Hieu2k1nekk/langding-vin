@@ -19,7 +19,7 @@ export default function HomePage() {
       <main id="noi-dung">
         <HeroSection />
         <VehicleSection />
-        <FeaturedVehicle />
+        {isSectionVisible("noi-bat") && <FeaturedVehicle />}
         {isSectionVisible("vi-sao") && <BenefitsSection />}
         {isSectionVisible("uu-dai") && <PromotionSection />}
         <InstallmentSection />

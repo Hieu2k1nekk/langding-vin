@@ -32,6 +32,7 @@ export const siteConfig = {
  * link menu/footer trỏ tới section bị ẩn cũng tự ẩn theo.
  */
 export const sectionVisibility = {
+  "noi-bat": false, // Sản phẩm nổi bật (VF 7)
   "vi-sao": false, // Vì sao chọn VinFast
   "uu-dai": true, // Ưu đãi & chính sách
   "hoi-dap": false, // Câu hỏi thường gặp
