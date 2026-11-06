@@ -103,7 +103,7 @@ export function Footer() {
           </div>
         </nav>
       </div>
-
+{/* 
       <div id="chinh-sach-bao-mat" className="container-page scroll-mt-20 border-t border-white/10 py-8 text-xs leading-relaxed">
         <p className="font-medium text-white/80">Chính sách bảo mật</p>
         <p className="mt-2 max-w-4xl">
@@ -142,7 +142,7 @@ export function Footer() {
         <a href="#chinh-sach-bao-mat" className="hover:text-white">
           Chính sách bảo mật
         </a>
-      </div>
+      </div> */}
     </footer>
   )
 }
